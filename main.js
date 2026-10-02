@@ -15,10 +15,10 @@ const EDIT_PACKAGES = [
 const AI_PRODUCTS = [
     { 
         id: "ai-prompt-maker", 
-        name: "Protokol Mesin Neural AI", 
+        name: "Protokol Mesin Prompt AI", 
         category: "MASTER PROMPT", 
         price: 45000, 
-        image: "1000971207.jpg",
+        image: "https://ganga--link--ghhzdp9sv8hk.code.run/i/ebt4uv85.jpg",
         iconSvg: "ph-terminal-window", 
         badge: "HOT", 
         description: "Tools otomatis generate prompt dari foto referensi tanpa limit kuota. Bebas pakai kapan saja.", 
