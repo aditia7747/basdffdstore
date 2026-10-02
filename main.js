@@ -264,8 +264,8 @@ function initApp() {
         <!-- Marquee -->
         <div class="w-full bg-kvn-orange text-black border-b-2 border-black py-1.5 overflow-hidden flex whitespace-nowrap z-50 relative shadow-[0_2px_0_#000]">
             <div class="marquee-content font-mono text-[10px] font-black tracking-widest uppercase">
-                <span class="mx-4"><i class="ph-bold ph-lightning"></i> PREMIUM DIGITAL BOUTIQUE</span> <span class="mx-4">•</span> JASA EDIT FOTO PROFESIONAL <span class="mx-4">•</span> MASTER AI PROMPTS <span class="mx-4">•</span> DIRECT ORDER VIA WHATSAPP <span class="mx-4">
-                <span class="mx-4"><i class="ph-bold ph-lightning"></i> PREMIUM DIGITAL BOUTIQUE</span> <span class="mx-4">•</span> JASA EDIT FOTO PROFESIONAL <span class="mx-4">•</span> MASTER AI PROMPTS <span class="mx-4">•</span> DIRECT ORDER VIA WHATSAPP <span class="mx-4">
+                <span class="mx-4"><i class="ph-bold ph-lightning"></i> PREMIUM DIGITAL</span> <span class="mx-4">•</span> JASA EDIT FOTO<span class="mx-4">•</span> AI PROMPTS <span class="mx-4">•</span> DIRECT ORDER VIA WHATSAPP <span class="mx-4">
+                <span class="mx-4"><i class="ph-bold ph-lightning"></i> PREMIUM DIGITAL BOUTIQUE</span> <span class="mx-4">•</span> JASA EDIT FOTO<span class="mx-4">•</span> AI PROMPTS <span class="mx-4">•</span> DIRECT ORDER VIA WHATSAPP <span class="mx-4">
             </div>
         </div>
 
@@ -278,7 +278,7 @@ function initApp() {
                     </div>
                     <div>
                         <h1 class="font-heading font-black text-xl leading-none text-white tracking-tight uppercase">KEVNAI <span class="text-kvn-orange">STORE</span></h1>
-                        <p class="font-mono text-[8px] font-bold text-kvn-gray tracking-[0.2em] uppercase mt-0.5">Digital Boutique</p>
+                        <p class="font-mono text-[8px] font-bold text-kvn-gray tracking-[0.2em] uppercase mt-0.5">Digital</p>
                     </div>
                 </button>
                 <div class="hidden md:flex items-center gap-1 font-mono font-bold text-[11px] uppercase tracking-wider bg-black/50 p-1 rounded-lg border border-white/5">
@@ -303,7 +303,7 @@ function initApp() {
                             <span class="w-1.5 h-1.5 bg-kvn-orange rounded-full animate-pulse"></span> STORE AKTIF
                         </div>
                         <h2 class="font-heading font-black text-4xl md:text-5xl lg:text-6xl leading-[1.05] tracking-tight text-white uppercase">
-                            Kualitas <span class="text-kvn-orange text-3d inline-block">Premium.</span><br>
+                            KevnAI<span class="text-kvn-orange text-3d inline-block">Premium.</span><br>
                             Order <span class="text-white text-3d-light">Simple.</span>
                         </h2>
                         <p class="text-gray-400 font-medium text-sm md:text-base leading-relaxed border-l-2 border-kvn-orange pl-3 bg-kvn-card/50 py-2 pr-4 rounded-r-lg max-w-lg mx-auto text-left">
@@ -324,7 +324,7 @@ function initApp() {
                         </div>
                         <div class="relative z-10">
                             <h3 class="font-heading font-black text-2xl mb-2 text-white uppercase tracking-wide">JASA EDIT FOTO</h3>
-                            <p class="text-gray-400 font-medium text-xs max-w-[80%] leading-relaxed">Pilih jumlah foto. Semakin banyak, harga per fotonya semakin ringan. Perbaikan warna & detail pro.</p>
+                            <p class="text-gray-400 font-medium text-xs max-w-[80%] leading-relaxed"</p>
                         </div>
                     </button>
                     <button onclick="navigate('ai')" class="text-left bg-kvn-orange border-2 border-black rounded-2xl p-6 shadow-3d-orange card-3d-hover group relative overflow-hidden focus:outline-none">
@@ -339,7 +339,7 @@ function initApp() {
                         </div>
                         <div class="relative z-10 text-black">
                             <h3 class="font-heading font-black text-2xl mb-2 uppercase tracking-wide">AI TOOLS</h3>
-                            <p class="text-black/80 font-bold text-xs max-w-[80%] leading-relaxed">Tools digital untuk kebutuhan AI, master prompt, dan setup kreatif tanpa trial-error tingkat tinggi.</p>
+                            <p class="text-black/80 font-bold text-xs max-w-[80%] leading-relaxed"></p>
                         </div>
                     </button>
                 </div>
@@ -396,7 +396,7 @@ function initApp() {
                         <h2 class="font-heading font-black text-2xl text-white tracking-tight uppercase">KEVNAI STORE</h2>
                     </div>
                     <p class="font-mono text-gray-500 text-xs leading-relaxed">
-                        Premium Digital Boutique. Jasa edit foto & AI Tools tingkat tinggi.
+                        Premium Jasa edit foto & AI Tools.
                     </p>
                 </div>
                 <div class="bg-kvn-card border-2 border-kvn-orange rounded-xl p-5 shadow-3d-orange transform hover:-translate-y-1 transition-transform w-full md:w-auto md:min-w-[350px]">
