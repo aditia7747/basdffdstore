@@ -18,7 +18,7 @@ const AI_PRODUCTS = [
         name: "Protokol Mesin Prompt AI", 
         category: "MASTER PROMPT", 
         price: 45000, 
-        image: "https://ganga--link--ghhzdp9sv8hk.code.run/i/ebt4uv85.jpg",
+        image: "https://files.catbox.moe/6rztts.jpg",
         iconSvg: "ph-terminal-window", 
         badge: "HOT", 
         description: "Tools otomatis generate prompt dari foto referensi tanpa limit kuota. Bebas pakai kapan saja.", 
