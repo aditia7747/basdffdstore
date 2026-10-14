@@ -1,22 +1,40 @@
 <!DOCTYPE html>
-<html lang="id" class="scroll-smooth">
+<html lang="id" class="scroll-smooth dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>KEVNAI STORE | Premium Digital Boutique</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700,800,900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400,500,600,700,800&family=JetBrains+Mono:wght@500,600,700,800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
         tailwind.config = {
             darkMode: 'class',
             theme: {
                 extend: {
-                    fontFamily: { heading: ['Clash Display', 'sans-serif'], body: ['Plus Jakarta Sans', 'sans-serif'], mono: ['JetBrains Mono', 'monospace'] },
-                    colors: { kvn: { orange: '#FF6A00', dark: '#09090B', surface: '#121214', card: '#1C1C1F', light: '#F8F9FA', gray: '#A1A1AA' } },
-                    boxShadow: { '3d-dark': '4px 4px 0px 0px #000000, inset 1px 1px 0px 0px rgba(255, 255, 255, 0.05)', '3d-orange': '4px 4px 0px 0px #9A3F00, inset 1px 1px 0px 0px rgba(255, 255, 255, 0.15)', '3d-btn': '3px 3px 0px 0px #000000, inset 1px 1px 0px 0px rgba(255, 255, 255, 0.2)', '3d-hover': '6px 6px 0px 0px #000000, inset 1px 1px 0px 0px rgba(255, 255, 255, 0.1)' },
-                    animation: { 'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite' }
+                    fontFamily: { 
+                        heading: ['Clash Display', 'sans-serif'], 
+                        body: ['Plus Jakarta Sans', 'sans-serif'], 
+                        mono: ['JetBrains Mono', 'monospace'] 
+                    },
+                    colors: { 
+                        kvn: { 
+                            orange: '#FF6A00', 
+                            dark: '#09090B', 
+                            surface: '#121215', 
+                            card: '#18181C', 
+                            light: '#F8F9FA', 
+                            gray: '#A1A1AA' 
+                        } 
+                    },
+                    boxShadow: { 
+                        'soft-3d': '0 20px 40px -15px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.08)',
+                        'orange-3d': '0 20px 45px -15px rgba(255, 106, 0, 0.28), 0 0 0 1px rgba(255, 106, 0, 0.4)',
+                        'tactile': '0 4px 0 0 #000000',
+                        'tactile-lg': '0 6px 0 0 #000000'
+                    }
                 }
             }
         }
