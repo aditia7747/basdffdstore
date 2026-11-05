@@ -1,47 +1,1779 @@
 <!DOCTYPE html>
-<html lang="id" class="scroll-smooth dark">
+<html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>KEVNAI STORE | Premium Digital Boutique</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700,800,900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400,500,600,700,800&family=JetBrains+Mono:wght@500,600,700,800&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: { 
-                        heading: ['Clash Display', 'sans-serif'], 
-                        body: ['Plus Jakarta Sans', 'sans-serif'], 
-                        mono: ['JetBrains Mono', 'monospace'] 
-                    },
-                    colors: { 
-                        kvn: { 
-                            orange: '#FF6A00', 
-                            dark: '#09090B', 
-                            surface: '#121215', 
-                            card: '#18181C', 
-                            light: '#F8F9FA', 
-                            gray: '#A1A1AA' 
-                        } 
-                    },
-                    boxShadow: { 
-                        'soft-3d': '0 20px 40px -15px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.08)',
-                        'orange-3d': '0 20px 45px -15px rgba(255, 106, 0, 0.28), 0 0 0 1px rgba(255, 106, 0, 0.4)',
-                        'tactile': '0 4px 0 0 #000000',
-                        'tactile-lg': '0 6px 0 0 #000000'
-                    }
-                }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>KevnAI Studio — Konversi Foto ke Prompt AI Presisi Tinggi</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Space Grotesk, Plus Jakarta Sans, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Space+Grotesk:wght@700;800&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              bg: '#F3F1EC',
+              ink: '#111111',
+              lime: '#B8FF01',
+              amber: '#FFC700',
+              violet: '#A855F7',
+              cyan: '#38BDF8',
+              coral: '#FF5252',
+              surface: '#FFFFFF'
             }
+          },
+          fontFamily: {
+            display: ['Space Grotesk', 'sans-serif'],
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace']
+          }
         }
-    </script>
-    <link rel="stylesheet" href="style.css">
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      --ink: #111111;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #F3F1EC;
+      background-image: 
+        linear-gradient(to right, rgba(17, 17, 17, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(17, 17, 17, 0.05) 1px, transparent 1px);
+      background-size: 24px 24px;
+      color: #111111;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, .font-display {
+      font-family: 'Space Grotesk', sans-serif;
+      letter-spacing: -0.02em;
+    }
+
+    /* 3D Extruded Neobrutalism Cards */
+    .card-3d {
+      background-color: #FFFFFF;
+      border: 3px solid #111111;
+      border-radius: 18px;
+      box-shadow: 
+        0 8px 0 #111111,
+        0 14px 24px rgba(17, 17, 17, 0.08),
+        inset 0 2px 0 rgba(255, 255, 255, 0.9);
+      position: relative;
+    }
+
+    .card-3d-sm {
+      border: 3px solid #111111;
+      border-radius: 14px;
+      box-shadow: 
+        0 5px 0 #111111,
+        inset 0 2px 0 rgba(255, 255, 255, 0.75);
+    }
+
+    /* 3D Mechanical Keycap Push Buttons */
+    .btn-3d {
+      border: 3px solid #111111;
+      border-radius: 14px;
+      box-shadow: 
+        0 6px 0 #111111,
+        0 10px 16px rgba(17, 17, 17, 0.1),
+        inset 0 2px 0 rgba(255, 255, 255, 0.65);
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 800;
+      transition: transform 0.12s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.12s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.15s ease;
+      user-select: none;
+      position: relative;
+    }
+
+    .btn-3d:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 
+        0 8px 0 #111111,
+        0 14px 20px rgba(17, 17, 17, 0.14),
+        inset 0 2px 0 rgba(255, 255, 255, 0.8);
+    }
+
+    .btn-3d:active:not(:disabled) {
+      transform: translateY(5px);
+      box-shadow: 
+        0 1px 0 #111111,
+        0 2px 4px rgba(17, 17, 17, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    }
+
+    .btn-3d:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    /* 3D Recessed Inputs */
+    .input-3d {
+      border: 3px solid #111111;
+      border-radius: 12px;
+      background-color: #FFFFFF;
+      box-shadow: inset 0 3px 0 rgba(17, 17, 17, 0.08), 0 3px 0 #111111;
+      transition: all 0.15s ease;
+    }
+
+    .input-3d:focus {
+      outline: none;
+      background-color: #FFFDF7;
+      box-shadow: inset 0 2px 0 rgba(184, 255, 1, 0.3), 0 5px 0 #111111;
+      transform: translateY(-1px);
+    }
+
+    /* 3D Badge Pill */
+    .badge-3d {
+      border: 2.5px solid #111111;
+      border-radius: 10px;
+      box-shadow: 0 3px 0 #111111;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 800;
+    }
+
+    /* Floating 3D Icon Box */
+    .icon-box-3d {
+      border: 3px solid #111111;
+      border-radius: 14px;
+      box-shadow: 0 4px 0 #111111, inset 0 2px 0 rgba(255, 255, 255, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: #F3F1EC; border-left: 2px solid #111111; }
+    ::-webkit-scrollbar-thumb { background: #111111; border-radius: 4px; }
+  </style>
 </head>
-<body id="app-root" class="font-body antialiased selection:bg-kvn-orange selection:text-black">
-    <script src="main.js"></script>
+<body class="min-h-screen flex flex-col selection:bg-brand-lime selection:text-black">
+
+  <!-- TOP NAVIGATION BAR -->
+  <header class="sticky top-0 z-30 bg-[#F3F1EC]/90 backdrop-blur-md border-b-[3px] border-brand-ink">
+    <div class="max-w-6xl mx-auto px-4 h-20 flex items-center justify-between gap-3">
+      
+      <!-- Brand Identity -->
+      <div class="flex items-center gap-3.5">
+        <div class="w-12 h-12 bg-brand-lime icon-box-3d shrink-0">
+          <!-- Custom 3D Camera Spark SVG Icon -->
+          <svg class="w-7 h-7" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="7" width="22" height="16" rx="4" fill="#FFFFFF" stroke="#111111" stroke-width="2.5"/>
+            <path d="M9 7L10.8 4H17.2L19 7H9Z" fill="#FFC700" stroke="#111111" stroke-width="2.5" stroke-linejoin="round"/>
+            <circle cx="14" cy="15" r="4.5" fill="#38BDF8" stroke="#111111" stroke-width="2.5"/>
+            <circle cx="20.5" cy="10.5" r="1.5" fill="#111111"/>
+          </svg>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="font-display font-extrabold text-xl sm:text-2xl text-brand-ink tracking-tight">KevnAI Studio</span>
+            <span class="badge-3d bg-brand-amber text-black text-[10px] sm:text-xs px-2.5 py-0.5 uppercase">
+              PRO 3D
+            </span>
+          </div>
+          <p class="text-xs font-semibold text-zinc-600 hidden sm:block">Konversi Foto ke Prompt AI Presisi Tinggi</p>
+        </div>
+      </div>
+
+      <!-- Navigation Actions -->
+      <div class="flex items-center gap-2.5">
+        <!-- Guest Login Button -->
+        <button id="navLoginBtn" onclick="openModal('authModal')" class="btn-3d px-4 sm:px-5 py-2.5 bg-brand-lime text-black text-xs sm:text-sm flex items-center gap-2">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
+            <polyline points="10 17 15 12 10 7"/>
+            <line x1="15" y1="12" x2="3" y2="12"/>
+          </svg>
+          <span>Masuk / Daftar</span>
+        </button>
+
+        <!-- Logged-In Menu -->
+        <div id="navUserMenu" class="hidden flex items-center gap-2 sm:gap-2.5">
+          <button onclick="openModal('redeemModal')" class="btn-3d px-3.5 sm:px-4 py-2.5 bg-brand-amber text-black text-xs sm:text-sm flex items-center gap-1.5">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/>
+              <path d="M13 5v2"/><path d="M13 17v2"/><path d="M13 11v2"/>
+            </svg>
+            <span>Tukar Voucher</span>
+          </button>
+
+          <button id="navAdminBtn" onclick="openAdminConsole()" class="hidden btn-3d px-3.5 sm:px-4 py-2.5 bg-brand-violet text-white text-xs sm:text-sm flex items-center gap-1.5">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="18" height="18" x="3" y="3" rx="2"/>
+              <path d="M9 9h6"/><path d="M9 15h6"/>
+            </svg>
+            <span class="hidden sm:inline">Panel Admin</span>
+          </button>
+
+          <button id="navLogoutBtn" title="Keluar Akun" class="btn-3d p-2.5 bg-white hover:bg-brand-coral hover:text-white text-black">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+              <polyline points="16 17 21 12 16 7"/>
+              <line x1="21" y1="12" x2="9" y2="12"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- TOAST NOTIFICATION CONTAINER -->
+  <div id="toastContainer" class="fixed bottom-5 right-5 left-5 sm:left-auto z-50 flex flex-col gap-3 max-w-sm w-full pointer-events-none"></div>
+
+  <!-- MAIN WORKSPACE -->
+  <main class="flex-1 max-w-6xl w-full mx-auto px-4 py-6 sm:py-8 space-y-7">
+
+    <!-- GUEST HERO BANNER (Shown when logged out) -->
+    <section id="guestBanner" class="card-3d bg-brand-lime p-6 sm:p-8">
+      <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <div class="space-y-2.5 max-w-2xl">
+          <div class="inline-flex items-center gap-2 badge-3d bg-white px-3 py-1 text-xs">
+            <span class="w-2.5 h-2.5 rounded-full bg-brand-ink animate-ping"></span>
+            <span>GENERATOR PROMPT VISUAL GENERASI TERBARU</span>
+          </div>
+          <h1 class="text-2xl sm:text-3xl font-display font-extrabold text-brand-ink leading-tight">
+            Ubah Foto Referensi Menjadi Prompt AI Siap Pakai dalam Sekali Klik
+          </h1>
+          <p class="text-xs sm:text-sm font-semibold text-zinc-800 leading-relaxed">
+            Ekstrak detail wajah, gaya rambut, pakaian, pose, pencahayaan, hingga karakter kamera secara otomatis ke dalam satu blok teks utuh yang siap disalin.
+          </p>
+        </div>
+        <button onclick="openModal('authModal')" class="btn-3d w-full md:w-auto px-7 py-4 bg-white text-black text-sm sm:text-base shrink-0 flex items-center justify-center gap-2">
+          <span>Mulai Gunakan Gratis</span>
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- MEMBER 3D METRIC CARDS (Shown when logged in) -->
+    <section id="memberDashboard" class="hidden grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5">
+      
+      <!-- Card 1: Status Member -->
+      <div class="card-3d p-4 sm:p-5 bg-white flex items-center justify-between gap-3">
+        <div class="min-w-0">
+          <span class="text-[11px] font-display font-extrabold uppercase tracking-wider text-zinc-500">Status Member</span>
+          <div class="flex items-center gap-2 mt-1">
+            <span id="userRoleBadge" class="badge-3d bg-brand-lime text-black text-xs px-3 py-0.5 uppercase">MEMBER</span>
+          </div>
+          <p id="userEmailDisplay" class="text-xs font-bold text-zinc-700 truncate mt-2">nama@email.com</p>
+          <p id="roleExpiryText" class="text-[11px] font-semibold text-zinc-500 mt-0.5">Pembaruan kuota pukul 00:00 WIB</p>
+        </div>
+        <div class="w-12 h-12 bg-brand-cyan icon-box-3d shrink-0">
+          <svg class="w-6 h-6 text-black" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Card 2: Kuota Harian -->
+      <div class="card-3d p-4 sm:p-5 bg-white flex items-center justify-between gap-3">
+        <div>
+          <span class="text-[11px] font-display font-extrabold uppercase tracking-wider text-zinc-500">Kuota Harian</span>
+          <div class="flex items-baseline gap-1.5 mt-1">
+            <span id="quotaLeftDisplay" class="text-3xl font-display font-extrabold text-brand-ink">5</span>
+            <span class="text-sm font-bold text-zinc-500">/ <span id="quotaMaxDisplay">5</span> tersisa</span>
+          </div>
+          <p class="text-[11px] font-semibold text-zinc-500 mt-1.5">Direset otomatis setiap hari</p>
+        </div>
+        <div class="w-12 h-12 bg-brand-lime icon-box-3d shrink-0">
+          <svg class="w-6 h-6 text-black" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Card 3: Kuota Tambahan -->
+      <div class="card-3d p-4 sm:p-5 bg-white flex items-center justify-between gap-3">
+        <div>
+          <span class="text-[11px] font-display font-extrabold uppercase tracking-wider text-zinc-500">Kuota Tambahan</span>
+          <div class="flex items-baseline gap-2 mt-1">
+            <span id="extraQuotaCount" class="text-3xl font-display font-extrabold text-brand-ink">0</span>
+            <span class="text-xs font-bold text-zinc-500">kuota ekstra</span>
+          </div>
+          <button onclick="openModal('redeemModal')" class="mt-1.5 text-xs font-display font-extrabold text-brand-violet hover:underline flex items-center gap-1">
+            <span>+ Tambah Kuota</span>
+          </button>
+        </div>
+        <div class="w-12 h-12 bg-brand-amber icon-box-3d shrink-0">
+          <svg class="w-6 h-6 text-black" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/>
+          </svg>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- STUDIO WORKSPACE GRID -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-7 items-start">
+
+      <!-- LEFT PANEL: UPLOAD REFERENCE IMAGE (5 COLUMNS) -->
+      <div class="lg:col-span-5 card-3d p-5 sm:p-6 space-y-5 bg-white">
+        
+        <div class="flex items-center justify-between border-b-[3px] border-brand-ink pb-4">
+          <div class="flex items-center gap-3">
+            <span class="w-9 h-9 bg-brand-amber icon-box-3d font-display font-extrabold text-sm">01</span>
+            <div>
+              <h2 class="text-base sm:text-lg font-display font-extrabold text-brand-ink">Unggah Foto Referensi</h2>
+              <p class="text-xs font-semibold text-zinc-500">Pilih foto yang ingin dibuatkan prompt</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3D Dropzone Area -->
+        <div id="dropArea" class="relative card-3d-sm bg-[#F3F1EC] hover:bg-brand-lime/15 transition-colors flex flex-col items-center justify-center min-h-[270px] p-5 text-center cursor-pointer overflow-hidden">
+          <input type="file" id="imageInput" accept="image/*" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" />
+
+          <!-- Upload Empty State -->
+          <div id="uploadPlaceholder" class="space-y-3.5 pointer-events-none">
+            <div class="w-16 h-16 bg-white icon-box-3d mx-auto">
+              <!-- Custom 3D Image Upload SVG -->
+              <svg class="w-8 h-8 text-brand-ink" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="18" height="18" x="3" y="3" rx="3" ry="3"/>
+                <circle cx="9" cy="9" r="2"/>
+                <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/>
+              </svg>
+            </div>
+            <div class="space-y-1">
+              <p class="text-sm sm:text-base font-display font-extrabold text-brand-ink">Ketuk untuk Memilih Foto</p>
+              <p class="text-xs font-semibold text-zinc-600 max-w-xs mx-auto">
+                Mendukung format JPG, PNG, atau WebP dari galeri maupun kamera ponsel Anda.
+              </p>
+            </div>
+          </div>
+
+          <!-- Uploaded Image Preview -->
+          <div id="previewWrapper" class="hidden w-full flex flex-col items-center z-20">
+            <div class="p-2 bg-white card-3d-sm">
+              <img id="imagePreview" src="" alt="Pratinjau Foto" class="max-h-64 w-auto rounded-lg object-contain" />
+            </div>
+            <div class="mt-4 flex flex-wrap items-center justify-center gap-2.5">
+              <span id="imageMetaBadge" class="badge-3d bg-white text-black text-xs px-3 py-1"></span>
+              <button type="button" id="changePhotoBtn" class="btn-3d px-3.5 py-1.5 bg-brand-coral text-white text-xs flex items-center gap-1.5">
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/>
+                </svg>
+                <span>Ganti Foto</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Feature Pills -->
+        <div class="grid grid-cols-2 gap-2.5 pt-1">
+          <div class="card-3d-sm bg-[#F3F1EC] px-3 py-2.5 flex items-center gap-2 text-xs font-bold">
+            <span class="w-5 h-5 rounded-md bg-brand-lime border-2 border-black flex items-center justify-center text-[11px] font-extrabold">✓</span>
+            <span>Detail Wajah Presisi</span>
+          </div>
+          <div class="card-3d-sm bg-[#F3F1EC] px-3 py-2.5 flex items-center gap-2 text-xs font-bold">
+            <span class="w-5 h-5 rounded-md bg-brand-lime border-2 border-black flex items-center justify-center text-[11px] font-extrabold">✓</span>
+            <span>Komposisi & Sudut Asli</span>
+          </div>
+          <div class="card-3d-sm bg-[#F3F1EC] px-3 py-2.5 flex items-center gap-2 text-xs font-bold">
+            <span class="w-5 h-5 rounded-md bg-brand-lime border-2 border-black flex items-center justify-center text-[11px] font-extrabold">✓</span>
+            <span>Tekstur Kulit Alami</span>
+          </div>
+          <div class="card-3d-sm bg-[#F3F1EC] px-3 py-2.5 flex items-center gap-2 text-xs font-bold">
+            <span class="w-5 h-5 rounded-md bg-brand-lime border-2 border-black flex items-center justify-center text-[11px] font-extrabold">✓</span>
+            <span>Realisme iPhone 17 Pro</span>
+          </div>
+        </div>
+
+        <!-- 3D Generate Button -->
+        <button id="generateBtn" disabled class="btn-3d w-full py-4 px-5 text-sm sm:text-base bg-zinc-200 text-zinc-500 flex items-center justify-center gap-2.5">
+          <span>Buat Prompt Sekarang</span>
+        </button>
+
+      </div>
+
+      <!-- RIGHT PANEL: SINGLE UNIFIED PROMPT RESULT (7 COLUMNS) -->
+      <div class="lg:col-span-7 card-3d p-5 sm:p-6 flex flex-col min-h-[500px] bg-white">
+        
+        <div class="flex flex-wrap items-center justify-between gap-3 border-b-[3px] border-brand-ink pb-4 mb-5">
+          <div class="flex items-center gap-3">
+            <span class="w-9 h-9 bg-brand-lime icon-box-3d font-display font-extrabold text-sm">02</span>
+            <div>
+              <h2 class="text-base sm:text-lg font-display font-extrabold text-brand-ink">Hasil Prompt</h2>
+              <p class="text-xs font-semibold text-zinc-500">Tergabung dalam 1 blok teks utuh siap tempel</p>
+            </div>
+          </div>
+
+          <button id="copyTopBtn" onclick="copyUnifiedPrompt(this)" class="hidden btn-3d px-4 py-2 bg-brand-lime text-black text-xs sm:text-sm flex items-center gap-2">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+              <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+            </svg>
+            <span>Salin Prompt</span>
+          </button>
+        </div>
+
+        <!-- Result Empty State -->
+        <div id="resultEmptyState" class="my-auto py-14 text-center space-y-4">
+          <div class="w-16 h-16 bg-[#F3F1EC] icon-box-3d mx-auto">
+            <svg class="w-8 h-8 text-brand-ink" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+            </svg>
+          </div>
+          <div class="max-w-xs mx-auto space-y-1.5">
+            <p class="text-base font-display font-extrabold text-brand-ink">Belum Ada Prompt</p>
+            <p class="text-xs font-semibold text-zinc-600 leading-relaxed">
+              Unggah foto referensi pada panel di samping, lalu tekan tombol <b>Buat Prompt Sekarang</b>.
+            </p>
+          </div>
+        </div>
+
+        <!-- Result Loading State -->
+        <div id="resultLoadingState" class="hidden my-auto py-14 text-center space-y-4">
+          <div class="w-16 h-16 bg-brand-amber icon-box-3d mx-auto animate-bounce">
+            <svg class="w-8 h-8 text-black animate-spin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12a9 9 0 1 1-6.219-8.56"/>
+            </svg>
+          </div>
+          <div class="max-w-xs mx-auto space-y-1.5">
+            <p class="text-base font-display font-extrabold text-brand-ink">Menganalisis Detail Foto...</p>
+            <p class="text-xs font-semibold text-zinc-600">
+              Menyusun deskripsi subjek, pencahayaan, tekstur, dan komposisi secara menyeluruh. Mohon tunggu sebentar.
+            </p>
+          </div>
+        </div>
+
+        <!-- Result 1-Block Output -->
+        <div id="resultContent" class="hidden flex-1 flex flex-col justify-between space-y-4">
+          <div class="card-3d-sm bg-[#141414] text-zinc-100 flex flex-col flex-1 overflow-hidden">
+            <!-- Box Top Bar -->
+            <div class="px-4 py-3 bg-[#1F1F1F] border-b-2 border-zinc-700 flex items-center justify-between gap-2">
+              <div class="flex items-center gap-2">
+                <span class="w-3 h-3 rounded-full bg-brand-coral border border-black"></span>
+                <span class="w-3 h-3 rounded-full bg-brand-amber border border-black"></span>
+                <span class="w-3 h-3 rounded-full bg-brand-lime border border-black"></span>
+                <span class="text-xs font-mono font-bold text-brand-lime ml-1.5">Hasil Prompt Lengkap</span>
+              </div>
+              <span id="promptStatsBadge" class="text-[11px] font-mono text-zinc-400">Siap Disalin</span>
+            </div>
+
+            <!-- Single Copyable Prompt Text -->
+            <div class="p-4 sm:p-5 flex-1 overflow-y-auto max-h-[380px]">
+              <pre id="unifiedPromptText" class="text-xs sm:text-[13px] font-mono text-zinc-100 whitespace-pre-wrap break-words leading-relaxed select-all"></pre>
+            </div>
+          </div>
+
+          <!-- Full-Width 3D Copy Button -->
+          <button onclick="copyUnifiedPrompt(this)" class="btn-3d w-full py-4 px-5 bg-brand-lime text-black text-sm sm:text-base flex items-center justify-center gap-2.5">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+              <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+            </svg>
+            <span>Salin Prompt</span>
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t-[3px] border-brand-ink bg-white py-5 mt-12">
+    <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-bold text-zinc-700">
+      <div class="flex items-center gap-2">
+        <span class="w-6 h-6 bg-brand-lime border-2 border-black rounded-md flex items-center justify-center font-display font-extrabold text-black">K</span>
+        <span>KevnAI Studio &copy; 2026 — Seluruh Hak Cipta Dilindungi</span>
+      </div>
+      <div class="flex items-center gap-3">
+        <span class="badge-3d bg-[#F3F1EC] text-black px-3 py-1 text-[11px]">Layanan Aktif 24 Jam</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================== -->
+  <!-- MODAL 1: MASUK & DAFTAR AKUN               -->
+  <!-- ========================================== -->
+  <div id="authModal" class="hidden fixed inset-0 z-50 bg-black/70 backdrop-blur-xs flex items-center justify-center p-4">
+    <div class="card-3d max-w-md w-full p-6 sm:p-7 bg-white relative">
+      <button onclick="closeModal('authModal')" class="btn-3d absolute top-4 right-4 w-9 h-9 bg-brand-coral text-white flex items-center justify-center">
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+
+      <div class="badge-3d inline-block px-3 py-1 bg-brand-lime text-black text-xs mb-3">
+        AKUN KEVNAI STUDIO
+      </div>
+      <h3 id="authModalTitle" class="text-2xl font-display font-extrabold text-brand-ink">Masuk ke Akun</h3>
+      <p id="authModalSubtitle" class="text-xs font-semibold text-zinc-600 mt-1 mb-5">
+        Silakan masuk menggunakan alamat email dan kata sandi Anda.
+      </p>
+
+      <form id="authForm" class="space-y-4">
+        <div>
+          <label class="block text-xs font-display font-extrabold uppercase text-brand-ink mb-1.5">Alamat Email</label>
+          <input type="email" id="authEmail" required placeholder="nama@email.com" class="input-3d w-full px-4 py-3 text-sm font-semibold text-black" />
+        </div>
+        <div>
+          <label class="block text-xs font-display font-extrabold uppercase text-brand-ink mb-1.5">Kata Sandi</label>
+          <input type="password" id="authPassword" required minlength="6" placeholder="Minimal 6 karakter" class="input-3d w-full px-4 py-3 text-sm font-semibold text-black" />
+        </div>
+
+        <button type="submit" id="authSubmitBtn" class="btn-3d w-full py-3.5 bg-brand-lime text-black text-sm">
+          Masuk Sekarang
+        </button>
+      </form>
+
+      <div class="my-4 flex items-center gap-3">
+        <div class="h-[2px] bg-zinc-300 flex-1"></div>
+        <span class="text-[11px] font-display font-extrabold uppercase text-zinc-500">ATAU</span>
+        <div class="h-[2px] bg-zinc-300 flex-1"></div>
+      </div>
+
+      <button type="button" id="googleAuthBtn" class="btn-3d w-full py-3 bg-white text-black text-xs sm:text-sm flex items-center justify-center gap-2.5">
+        <svg class="w-4 h-4" viewBox="0 0 24 24">
+          <path fill="#EA4335" d="M12 5c1.6 0 3 .6 4.1 1.7l3.1-3.1C17.3 1.8 14.8 1 12 1 7.4 1 3.5 3.6 1.6 7.4l3.7 2.8C6.2 7.2 8.9 5 12 5z"/>
+          <path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.6-.2-2.3H12v4.5h6.5c-.3 1.5-1.1 2.8-2.4 3.6l3.7 2.9c2.2-2 3.7-5 3.7-8.7z"/>
+          <path fill="#FBBC05" d="M5.3 14.8c-.2-.8-.4-1.6-.4-2.5s.2-1.7.4-2.5L1.6 7C.6 9 0 11.2 0 13.5s.6 4.5 1.6 6.5l3.7-2.9z"/>
+          <path fill="#34A853" d="M12 24c3.2 0 6-1.1 8-3l-3.7-2.9c-1.1.7-2.5 1.2-4.3 1.2-3.1 0-5.8-2.1-6.7-5l-3.7 2.8C3.5 21.4 7.4 24 12 24z"/>
+        </svg>
+        <span>Lanjutkan dengan Google</span>
+      </button>
+
+      <div class="mt-5 pt-4 border-t-2 border-zinc-200 text-center">
+        <button type="button" id="switchAuthModeBtn" class="text-xs font-display font-extrabold text-brand-ink hover:text-brand-violet underline">
+          Belum punya akun? Daftar Akun Baru
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- MODAL 2: TUKAR KODE VOUCHER                -->
+  <!-- ========================================== -->
+  <div id="redeemModal" class="hidden fixed inset-0 z-50 bg-black/70 backdrop-blur-xs flex items-center justify-center p-4">
+    <div class="card-3d max-w-md w-full p-6 sm:p-7 bg-white relative">
+      <button onclick="closeModal('redeemModal')" class="btn-3d absolute top-4 right-4 w-9 h-9 bg-brand-coral text-white flex items-center justify-center">
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+
+      <div class="w-12 h-12 bg-brand-amber icon-box-3d mb-3.5">
+        <svg class="w-6 h-6 text-black" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/>
+          <path d="M13 5v2"/><path d="M13 17v2"/><path d="M13 11v2"/>
+        </svg>
+      </div>
+
+      <h3 class="text-2xl font-display font-extrabold text-brand-ink">Tukar Kode Voucher</h3>
+      <p class="text-xs font-semibold text-zinc-600 mt-1 mb-5">
+        Masukkan kode voucher untuk menambah Kuota Tambahan atau meningkatkan status member ke paket VIP / Reseller.
+      </p>
+
+      <form id="redeemForm" class="space-y-4">
+        <div>
+          <label class="block text-xs font-display font-extrabold uppercase text-brand-ink mb-1.5">Kode Voucher</label>
+          <input type="text" id="voucherInput" required placeholder="Contoh: KUOTA-XXXX" class="input-3d w-full px-4 py-3.5 text-base font-mono font-bold text-black uppercase tracking-wider" />
+        </div>
+
+        <button type="submit" id="redeemSubmitBtn" class="btn-3d w-full py-3.5 bg-brand-amber text-black text-sm">
+          Gunakan Voucher Sekarang
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- MODAL 3: PANEL ADMIN                       -->
+  <!-- ========================================== -->
+  <div id="adminModal" class="hidden fixed inset-0 z-50 bg-black/75 backdrop-blur-xs flex items-center justify-center p-3 sm:p-4">
+    <div class="card-3d max-w-4xl w-full max-h-[92vh] flex flex-col bg-white overflow-hidden">
+
+      <!-- Admin Header -->
+      <div class="px-5 py-4 bg-brand-violet text-white border-b-[3px] border-brand-ink flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 bg-brand-lime text-black icon-box-3d">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="font-display font-extrabold text-base sm:text-lg">Panel Manajemen Admin</h3>
+            <p class="text-xs text-purple-100 font-medium">Kelola Voucher Kuota, Paket Member, dan Pengguna</p>
+          </div>
+        </div>
+        <button onclick="closeModal('adminModal')" class="btn-3d w-9 h-9 bg-white text-black flex items-center justify-center">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Admin Navigation Tabs -->
+      <div class="flex border-b-[3px] border-brand-ink bg-[#F3F1EC] px-4 pt-3 gap-2 overflow-x-auto">
+        <button onclick="switchAdminTab('tabCreateVoucher')" id="btnTabVoucher" class="px-4 py-2.5 text-xs font-display font-extrabold rounded-t-xl border-t-[3px] border-x-[3px] border-brand-ink bg-brand-lime text-black whitespace-nowrap">
+          1. Buat Voucher
+        </button>
+        <button onclick="switchAdminTab('tabManageUsers')" id="btnTabUsers" class="px-4 py-2.5 text-xs font-display font-extrabold rounded-t-xl border-t-[3px] border-x-[3px] border-brand-ink bg-white text-zinc-700 whitespace-nowrap">
+          2. Kelola Pengguna
+        </button>
+        <button onclick="switchAdminTab('tabVoucherHistory')" id="btnTabHistory" class="px-4 py-2.5 text-xs font-display font-extrabold rounded-t-xl border-t-[3px] border-x-[3px] border-brand-ink bg-white text-zinc-700 whitespace-nowrap">
+          3. Daftar Voucher
+        </button>
+      </div>
+
+      <!-- Admin Content Body -->
+      <div class="p-5 sm:p-6 overflow-y-auto space-y-5 flex-1 bg-white">
+
+        <!-- TAB 1: CREATE VOUCHERS -->
+        <div id="tabCreateVoucher" class="space-y-5">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+            <!-- Generator A: Extra Quota Voucher -->
+            <div class="card-3d-sm bg-[#F3F1EC] p-5 space-y-3.5">
+              <div class="badge-3d inline-flex items-center gap-1.5 px-3 py-1 bg-brand-amber text-black text-xs">
+                <span>Voucher Kuota Tambahan</span>
+              </div>
+              <p class="text-xs font-semibold text-zinc-700 leading-relaxed">
+                Menambahkan kuota ekstra yang <b>tetap tersimpan walaupun lewat reset harian 00:00 WIB</b> hingga habis terpakai atau masa aktifnya selesai.
+              </p>
+
+              <div class="space-y-3 pt-1">
+                <div>
+                  <label class="block text-xs font-display font-extrabold mb-1">Jumlah Kuota Tambahan</label>
+                  <input type="number" id="extraAmountInput" value="25" min="1" class="input-3d w-full px-3.5 py-2 text-sm font-mono font-bold" />
+                </div>
+                <div>
+                  <label class="block text-xs font-display font-extrabold mb-1">Masa Berlaku (Hari)</label>
+                  <input type="number" id="extraDurationDays" value="7" min="1" class="input-3d w-full px-3.5 py-2 text-sm font-mono font-bold" />
+                </div>
+                <button onclick="createExtraQuotaVoucher()" class="btn-3d w-full py-3 bg-brand-amber text-black text-xs uppercase">
+                  Buat Kode Kuota Tambahan
+                </button>
+              </div>
+            </div>
+
+            <!-- Generator B: Role Upgrade Voucher -->
+            <div class="card-3d-sm bg-[#F3F1EC] p-5 space-y-3.5">
+              <div class="badge-3d inline-flex items-center gap-1.5 px-3 py-1 bg-brand-cyan text-black text-xs">
+                <span>Voucher Paket Member (Role)</span>
+              </div>
+              <p class="text-xs font-semibold text-zinc-700 leading-relaxed">
+                Meningkatkan status member menjadi <b>VIP (50/hari)</b> atau <b>Reseller (200/hari)</b> sesuai durasi hari yang ditentukan.
+              </p>
+
+              <div class="space-y-3 pt-1">
+                <div>
+                  <label class="block text-xs font-display font-extrabold mb-1">Pilih Paket Role</label>
+                  <select id="roleTargetSelect" class="input-3d w-full px-3.5 py-2 text-sm font-bold">
+                    <option value="vip">VIP Member (50 Kuota / Hari)</option>
+                    <option value="reseller">Reseller Pro (200 Kuota / Hari)</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-xs font-display font-extrabold mb-1">Durasi Aktif (Hari)</label>
+                  <input type="number" id="roleDurationDays" value="30" min="1" class="input-3d w-full px-3.5 py-2 text-sm font-mono font-bold" />
+                </div>
+                <button onclick="createRoleUpgradeVoucher()" class="btn-3d w-full py-3 bg-brand-cyan text-black text-xs uppercase">
+                  Buat Kode Paket Member
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Newly Generated Voucher Banner -->
+          <div id="generatedCodeBox" class="hidden card-3d-sm bg-brand-lime p-4 sm:p-5 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div>
+              <span class="badge-3d bg-white text-black text-[10px] px-2.5 py-0.5 uppercase">Voucher Siap Digunakan</span>
+              <div id="generatedCodeText" class="text-2xl font-mono font-extrabold text-black tracking-wider mt-1.5 select-all">KUOTA-XXXX</div>
+              <p id="generatedCodeDesc" class="text-xs font-bold text-zinc-800 mt-0.5"></p>
+            </div>
+            <button onclick="copyGeneratedCode()" class="btn-3d w-full sm:w-auto px-5 py-2.5 bg-white text-black text-xs">
+              Salin Kode Voucher
+            </button>
+          </div>
+        </div>
+
+        <!-- TAB 2: MANAGE USERS -->
+        <div id="tabManageUsers" class="hidden space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold text-zinc-700">Daftar pengguna terdaftar:</span>
+            <button onclick="loadAdminUsers()" class="btn-3d px-3.5 py-1.5 bg-brand-lime text-black text-xs">
+              Muat Ulang
+            </button>
+          </div>
+
+          <div class="card-3d-sm overflow-x-auto">
+            <table class="w-full text-left text-xs">
+              <thead class="bg-brand-ink text-white font-display">
+                <tr>
+                  <th class="p-3">Email Pengguna</th>
+                  <th class="p-3">Status</th>
+                  <th class="p-3">Pemakaian Harian</th>
+                  <th class="p-3">Kuota Tambahan</th>
+                  <th class="p-3">Pengaturan</th>
+                </tr>
+              </thead>
+              <tbody id="adminUsersTable" class="divide-y-2 divide-brand-ink font-semibold bg-white">
+                <tr><td colspan="5" class="p-4 text-center">Memuat data pengguna...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- TAB 3: VOUCHER HISTORY -->
+        <div id="tabVoucherHistory" class="hidden space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold text-zinc-700">Daftar seluruh voucher yang telah dibuat:</span>
+            <button onclick="loadAdminVouchers()" class="btn-3d px-3.5 py-1.5 bg-brand-lime text-black text-xs">
+              Muat Ulang
+            </button>
+          </div>
+
+          <div class="card-3d-sm overflow-x-auto">
+            <table class="w-full text-left text-xs">
+              <thead class="bg-brand-ink text-white font-display">
+                <tr>
+                  <th class="p-3">Kode Voucher</th>
+                  <th class="p-3">Manfaat</th>
+                  <th class="p-3">Status</th>
+                  <th class="p-3">Tindakan</th>
+                </tr>
+              </thead>
+              <tbody id="adminVouchersTable" class="divide-y-2 divide-brand-ink font-semibold bg-white">
+                <tr><td colspan="4" class="p-4 text-center">Memuat daftar voucher...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================= -->
+  <!-- CORE APPLICATION LOGIC                                    -->
+  <!-- ========================================================= -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import { 
+      getAuth, 
+      onAuthStateChanged, 
+      signInWithEmailAndPassword, 
+      createUserWithEmailAndPassword, 
+      GoogleAuthProvider,
+      signInWithPopup,
+      signOut 
+    } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+    import { 
+      getDatabase, 
+      ref, 
+      get, 
+      set, 
+      update, 
+      remove 
+    } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+
+    // 1. CONFIGURATION
+    const firebaseConfig = {
+      apiKey: "AIzaSyBlISjGEArUzKBmVsA3n5RyUBeLOOUgxdw",
+      authDomain: "kevnaipromptersss.firebaseapp.com",
+      databaseURL: "https://kevnaipromptersss-default-rtdb.firebaseio.com",
+      projectId: "kevnaipromptersss",
+      storageBucket: "kevnaipromptersss.firebasestorage.app",
+      messagingSenderId: "221519062124",
+      appId: "1:221519062124:web:039ff682106e37bf772449"
+    };
+    const GEMINI_API_KEY = "AIzaSyDpGn2De8UL9lXIHblX5AUh7ePq_gQehb0";
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getDatabase(app);
+    const googleProvider = new GoogleAuthProvider();
+
+    const ROLE_LIMITS = {
+      free: 5,
+      vip: 50,
+      reseller: 200,
+      admin: 999999
+    };
+
+    let currentUser = null;
+    let userData = null;
+    let silentDeviceKey = null;
+    let deviceUsedToday = 0;
+    let isRegisterMode = false;
+    let currentImageBase64 = null;
+
+    // 2. SILENT BACKGROUND DEVICE FINGERPRINTING (Invisible to UI)
+    async function getSilentDeviceFingerprint() {
+      if (silentDeviceKey) return silentDeviceKey;
+
+      const traits = [
+        navigator.platform || '',
+        navigator.language || '',
+        `${screen.width}x${screen.height}x${screen.colorDepth}`,
+        String(window.devicePixelRatio || 1),
+        String(navigator.hardwareConcurrency || 4),
+        Intl.DateTimeFormat().resolvedOptions().timeZone || ''
+      ];
+
+      try {
+        const glCanvas = document.createElement('canvas');
+        const gl = glCanvas.getContext('webgl') || glCanvas.getContext('experimental-webgl');
+        if (gl) {
+          const dbg = gl.getExtension('WEBGL_debug_renderer_info');
+          if (dbg) {
+            traits.push(gl.getParameter(dbg.UNMASKED_RENDERER_WEBGL) || '');
+          }
+        }
+      } catch (e) {}
+
+      try {
+        const c = document.createElement('canvas');
+        c.width = 180;
+        c.height = 40;
+        const ctx = c.getContext('2d');
+        ctx.font = '13px sans-serif';
+        ctx.fillStyle = '#B8FF01';
+        ctx.fillRect(5, 5, 60, 20);
+        ctx.fillStyle = '#111111';
+        ctx.fillText('KevnAIStudio3D', 10, 18);
+        traits.push(c.toDataURL().slice(-64));
+      } catch (e) {}
+
+      const msgBuffer = new TextEncoder().encode(traits.join('|'));
+      const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+      const hex = Array.from(new Uint8Array(hashBuffer))
+        .map(b => b.toString(16).padStart(2, '0'))
+        .join('')
+        .substring(0, 16);
+
+      silentDeviceKey = `dfp_${hex}`;
+      return silentDeviceKey;
+    }
+
+    function getJakartaDate() {
+      return new Intl.DateTimeFormat('en-CA', {
+        timeZone: 'Asia/Jakarta',
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit'
+      }).format(new Date());
+    }
+
+    // 3. MASTER SYSTEM PROMPT V1.7
+    const MASTER_SYSTEM_INSTRUCTION = `You are an ultra-precise visual reverse-engineering system following V1.7 Reference-Adaptive Rules.
+Perform a 99.9% accurate visual analysis of the uploaded reference image and generate a final AI image generation prompt in English.
+CRITICAL V1.7 RULES:
+1. Reference Structure Supremacy: Never guess, add, remove, or redesign visual content not present in the reference image. Strictly preserve original orientation, aspect ratio, camera roll, tilt, Dutch angle, crop, framing, mirror reflection, or multi-panel collage structure. Do NOT auto-straighten, do NOT normalize orientation, and do NOT force 9:16 if the reference differs.
+2. Facial Identity & Realistic Clean Skin: Strictly match facial geometry, eye shape, nose structure, lips, jawline, expression, and makeup (if present, preserve accurately; if absent, do not add). Describe skin as a clean, smooth, healthy, and natural complexion with authentic soft micro skin texture and fine natural pores, completely free from blemishes, acne, pimples, blackheads, enlarged pores, pitted scars, oily sheen, or artificial imperfections (while avoiding plastic skin smoothing or beauty filters).
+3. Candid iPhone 17 Pro Physics: Simulate a genuine, unedited raw candid smartphone photograph captured in the real world using an iPhone 17 Pro in lighting and perspective matching the reference.
+
+Return ONLY a valid JSON object with these exact 3 keys (each value must be a single continuous paragraph without line breaks inside the paragraph):
+{
+  "part1_edit": "Must start with: 'Edit and preserve the original face and identity of every visible person based on the reference image provided. Do not change facial identity...' and exhaustively describe every visible subject, facial features, clean skin complexion, hair, exact pose, hands/fingers, clothing layers/patterns, accessories, foreground/midground/background objects, spatial occlusion, reflections, lighting, and exact camera orientation/tilt/framing.",
+  "part2_desc": "Must start with: 'The final image must appear as a genuine, unedited raw candid smartphone photograph captured in the real world using an iPhone 17 Pro...' and describe authentic clean skin physics, lighting behavior, tactile surface/fabric micro-textures, and native smartphone optical characteristics.",
+  "part3_neg": "Must start with: 'Negative prompt: wrong identity, different face, facial distortion, altered facial geometry, generic AI face, beauty filter, airbrushed skin, plastic skin...' and list all forbidden alterations, skin defects (acne, pimples, blackheads, enlarged pores, pitted skin, oily skin), wrong hair/clothing/pose, artificial bokeh, studio lighting, auto-straightened composition, and elements not present in the original reference image."
+}`;
+
+    // 4. AUTH & SILENT QUOTA SYNC
+    onAuthStateChanged(auth, async (user) => {
+      currentUser = user;
+      await getSilentDeviceFingerprint();
+      if (user) {
+        await syncUserProfileAndQuota(user);
+        toggleLoggedInView(true);
+      } else {
+        userData = null;
+        toggleLoggedInView(false);
+      }
+    });
+
+    async function syncUserProfileAndQuota(user) {
+      const todayWIB = getJakartaDate();
+      const now = Date.now();
+      const fp = await getSilentDeviceFingerprint();
+      const isEmailAdmin = user.email && user.email.toLowerCase() === 'admin@kevnai.com';
+
+      // Check silent device usage for today (`device_usage/{fp}/{todayWIB}`)
+      const devUsageRef = ref(db, `device_usage/${fp}/${todayWIB}`);
+      const devSnap = await get(devUsageRef);
+      deviceUsedToday = devSnap.exists() ? (Number(devSnap.val().used) || 0) : 0;
+
+      // Check user profile (`users/{uid}`)
+      const userRef = ref(db, `users/${user.uid}`);
+      const userSnap = await get(userRef);
+
+      if (!userSnap.exists()) {
+        const initialRole = isEmailAdmin ? 'admin' : 'free';
+        const initialUsed = initialRole === 'free' ? deviceUsedToday : 0;
+        const newProfile = {
+          email: user.email,
+          role: initialRole,
+          dailyLimit: ROLE_LIMITS[initialRole],
+          usedToday: initialUsed,
+          extraLimit: 0,
+          extraExpiresAt: 0,
+          vipExpiresAt: 0,
+          deviceFp: fp,
+          lastResetDate: todayWIB,
+          createdAt: now
+        };
+        await set(userRef, newProfile);
+        userData = newProfile;
+      } else {
+        userData = userSnap.val();
+        const updates = {};
+
+        if (isEmailAdmin && userData.role !== 'admin') {
+          updates.role = 'admin';
+          updates.dailyLimit = ROLE_LIMITS.admin;
+          userData.role = 'admin';
+          userData.dailyLimit = ROLE_LIMITS.admin;
+        }
+
+        // Daily reset at 00:00 WIB
+        if (userData.lastResetDate !== todayWIB) {
+          updates.usedToday = 0;
+          updates.lastResetDate = todayWIB;
+          userData.usedToday = 0;
+          userData.lastResetDate = todayWIB;
+        }
+
+        // Role expiry check
+        if ((userData.role === 'vip' || userData.role === 'reseller') && userData.vipExpiresAt > 0 && now > userData.vipExpiresAt) {
+          updates.role = 'free';
+          updates.dailyLimit = ROLE_LIMITS.free;
+          updates.vipExpiresAt = 0;
+          userData.role = 'free';
+          userData.dailyLimit = ROLE_LIMITS.free;
+          userData.vipExpiresAt = 0;
+          showToast('Masa aktif paket member telah berakhir.', 'info');
+        }
+
+        // Extra quota expiry check (survives daily reset unless expired)
+        if (userData.extraLimit > 0 && userData.extraExpiresAt > 0 && now > userData.extraExpiresAt) {
+          updates.extraLimit = 0;
+          updates.extraExpiresAt = 0;
+          userData.extraLimit = 0;
+          userData.extraExpiresAt = 0;
+        }
+
+        if (userData.deviceFp !== fp) {
+          updates.deviceFp = fp;
+          userData.deviceFp = fp;
+        }
+
+        // Silent sync for Free users so switching accounts on the same phone carries over daily usage
+        if (userData.role === 'free') {
+          const effectiveUsed = Math.max(userData.usedToday || 0, deviceUsedToday);
+          if (effectiveUsed !== userData.usedToday) {
+            updates.usedToday = effectiveUsed;
+            userData.usedToday = effectiveUsed;
+          }
+          if (effectiveUsed !== deviceUsedToday) {
+            await set(devUsageRef, { used: effectiveUsed, updatedAt: now });
+            deviceUsedToday = effectiveUsed;
+          }
+        }
+
+        if (Object.keys(updates).length > 0) {
+          await update(userRef, updates);
+        }
+      }
+
+      renderDashboardMetrics();
+    }
+
+    function toggleLoggedInView(isLoggedIn) {
+      const navLoginBtn = document.getElementById('navLoginBtn');
+      const navUserMenu = document.getElementById('navUserMenu');
+      const memberDashboard = document.getElementById('memberDashboard');
+      const guestBanner = document.getElementById('guestBanner');
+
+      if (isLoggedIn) {
+        navLoginBtn.classList.add('hidden');
+        navUserMenu.classList.remove('hidden');
+        memberDashboard.classList.remove('hidden');
+        guestBanner.classList.add('hidden');
+      } else {
+        navLoginBtn.classList.remove('hidden');
+        navUserMenu.classList.add('hidden');
+        memberDashboard.classList.add('hidden');
+        guestBanner.classList.remove('hidden');
+      }
+      updateGenerateBtnUI();
+    }
+
+    function renderDashboardMetrics() {
+      if (!userData) return;
+
+      document.getElementById('userEmailDisplay').textContent = userData.email || '';
+
+      const roleBadge = document.getElementById('userRoleBadge');
+      const adminBtn = document.getElementById('navAdminBtn');
+      const expiryText = document.getElementById('roleExpiryText');
+      const quotaLeftEl = document.getElementById('quotaLeftDisplay');
+      const quotaMaxEl = document.getElementById('quotaMaxDisplay');
+      const extraCountEl = document.getElementById('extraQuotaCount');
+
+      const role = userData.role || 'free';
+      extraCountEl.textContent = userData.extraLimit || 0;
+
+      if (role === 'admin') {
+        roleBadge.textContent = 'ADMIN STUDIO';
+        roleBadge.className = 'badge-3d bg-brand-violet text-white text-xs px-3 py-0.5 uppercase';
+        adminBtn.classList.remove('hidden');
+        expiryText.textContent = 'Akses penuh tanpa batas kuota';
+        quotaLeftEl.textContent = '∞';
+        quotaMaxEl.textContent = '∞';
+      } else {
+        adminBtn.classList.add('hidden');
+        const maxDaily = ROLE_LIMITS[role] || 5;
+        const used = role === 'free'
+          ? Math.max(userData.usedToday || 0, deviceUsedToday)
+          : (userData.usedToday || 0);
+        const rem = Math.max(0, maxDaily - used);
+
+        quotaLeftEl.textContent = rem;
+        quotaMaxEl.textContent = maxDaily;
+
+        if (role === 'vip') {
+          roleBadge.textContent = 'VIP MEMBER';
+          roleBadge.className = 'badge-3d bg-brand-amber text-black text-xs px-3 py-0.5 uppercase';
+        } else if (role === 'reseller') {
+          roleBadge.textContent = 'RESELLER PRO';
+          roleBadge.className = 'badge-3d bg-brand-cyan text-black text-xs px-3 py-0.5 uppercase';
+        } else {
+          roleBadge.textContent = 'MEMBER REGULER';
+          roleBadge.className = 'badge-3d bg-brand-lime text-black text-xs px-3 py-0.5 uppercase';
+        }
+
+        if ((role === 'vip' || role === 'reseller') && userData.vipExpiresAt > 0) {
+          const expStr = new Date(userData.vipExpiresAt).toLocaleDateString('id-ID', {
+            day: 'numeric', month: 'short', year: 'numeric'
+          });
+          expiryText.textContent = `Masa aktif s/d ${expStr}`;
+        } else {
+          expiryText.textContent = 'Pembaruan kuota pukul 00:00 WIB';
+        }
+      }
+
+      updateGenerateBtnUI();
+    }
+
+    // 5. AUTHENTICATION FORMS
+    const authForm = document.getElementById('authForm');
+    const switchAuthModeBtn = document.getElementById('switchAuthModeBtn');
+
+    switchAuthModeBtn.addEventListener('click', () => {
+      isRegisterMode = !isRegisterMode;
+      document.getElementById('authModalTitle').textContent = isRegisterMode ? 'Daftar Akun Baru' : 'Masuk ke Akun';
+      document.getElementById('authModalSubtitle').textContent = isRegisterMode
+        ? 'Buat akun baru untuk mulai mengonversi foto referensi menjadi prompt.'
+        : 'Silakan masuk menggunakan alamat email dan kata sandi Anda.';
+      document.getElementById('authSubmitBtn').textContent = isRegisterMode ? 'Daftar Sekarang' : 'Masuk Sekarang';
+      switchAuthModeBtn.textContent = isRegisterMode
+        ? 'Sudah punya akun? Masuk di sini'
+        : 'Belum punya akun? Daftar Akun Baru';
+    });
+
+    authForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('authEmail').value.trim();
+      const password = document.getElementById('authPassword').value;
+      const btn = document.getElementById('authSubmitBtn');
+      const origText = btn.textContent;
+
+      btn.disabled = true;
+      btn.textContent = 'Memproses...';
+
+      try {
+        if (isRegisterMode) {
+          await createUserWithEmailAndPassword(auth, email, password);
+          showToast('Akun berhasil dibuat! Selamat datang di KevnAI Studio.', 'success');
+        } else {
+          await signInWithEmailAndPassword(auth, email, password);
+          showToast('Berhasil masuk ke akun Anda.', 'success');
+        }
+        closeModal('authModal');
+        authForm.reset();
+      } catch (err) {
+        let msg = 'Terjadi kendala saat memproses akun.';
+        if (err.code === 'auth/invalid-credential' || err.code === 'auth/wrong-password' || err.code === 'auth/user-not-found') {
+          msg = 'Email atau kata sandi yang dimasukkan belum sesuai.';
+        } else if (err.code === 'auth/email-already-in-use') {
+          msg = 'Email ini sudah terdaftar. Silakan masuk ke akun Anda.';
+        } else if (err.code === 'auth/weak-password') {
+          msg = 'Kata sandi minimal terdiri dari 6 karakter.';
+        }
+        showToast(msg, 'error');
+      } finally {
+        btn.disabled = false;
+        btn.textContent = origText;
+      }
+    });
+
+    document.getElementById('googleAuthBtn').addEventListener('click', async () => {
+      try {
+        await signInWithPopup(auth, googleProvider);
+        closeModal('authModal');
+        showToast('Berhasil masuk dengan akun Google.', 'success');
+      } catch (err) {
+        showToast('Silakan masuk atau daftar menggunakan Email & Kata Sandi di atas.', 'info');
+      }
+    });
+
+    document.getElementById('navLogoutBtn').addEventListener('click', async () => {
+      await signOut(auth);
+      showToast('Anda telah keluar dari sesi akun.', 'info');
+    });
+
+    // 6. VOUCHER REDEEM & OWNER ACTIVATION (`OWNER-KEVN777`)
+    document.getElementById('redeemForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!currentUser || !userData) {
+        showToast('Silakan masuk ke akun terlebih dahulu.', 'error');
+        return;
+      }
+
+      const input = document.getElementById('voucherInput');
+      const code = input.value.trim().toUpperCase();
+      if (!code) return;
+
+      const btn = document.getElementById('redeemSubmitBtn');
+      btn.disabled = true;
+      btn.textContent = 'Memeriksa Voucher...';
+
+      try {
+        if (code === 'OWNER-KEVN777') {
+          const userRef = ref(db, `users/${currentUser.uid}`);
+          await update(userRef, {
+            role: 'admin',
+            dailyLimit: ROLE_LIMITS.admin
+          });
+          userData.role = 'admin';
+          userData.dailyLimit = ROLE_LIMITS.admin;
+          renderDashboardMetrics();
+          closeModal('redeemModal');
+          input.value = '';
+          showToast('Akses Admin berhasil diaktifkan!', 'success');
+          return;
+        }
+
+        const voucherRef = ref(db, `redeem_codes/${code}`);
+        const snap = await get(voucherRef);
+
+        if (!snap.exists()) {
+          showToast('Kode voucher tidak ditemukan. Periksa kembali penulisan kode.', 'error');
+          return;
+        }
+
+        const v = snap.val();
+        const now = Date.now();
+
+        if (v.isUsed) {
+          showToast('Kode voucher ini sudah pernah digunakan sebelumnya.', 'error');
+          return;
+        }
+
+        if (v.expiresAt && now > v.expiresAt) {
+          showToast('Masa berlaku kode voucher ini telah habis.', 'error');
+          return;
+        }
+
+        const userRef = ref(db, `users/${currentUser.uid}`);
+
+        if (v.type === 'extra_quota') {
+          const amount = Number(v.value) || 10;
+          const days = Number(v.durationDays) || 7;
+          const newExtra = (userData.extraLimit || 0) + amount;
+          const newExtraExp = now + days * 24 * 60 * 60 * 1000;
+
+          await update(userRef, {
+            extraLimit: newExtra,
+            extraExpiresAt: newExtraExp
+          });
+          userData.extraLimit = newExtra;
+          userData.extraExpiresAt = newExtraExp;
+          showToast(`Berhasil menambahkan +${amount} Kuota Tambahan (aktif ${days} hari).`, 'success');
+
+        } else if (v.type === 'role_upgrade') {
+          const targetRole = v.roleTarget || 'vip';
+          const days = Number(v.durationDays) || 30;
+          const baseTime = (userData.vipExpiresAt && userData.vipExpiresAt > now) ? userData.vipExpiresAt : now;
+          const newExp = baseTime + days * 24 * 60 * 60 * 1000;
+          const newLimit = ROLE_LIMITS[targetRole] || 50;
+
+          await update(userRef, {
+            role: targetRole,
+            dailyLimit: newLimit,
+            vipExpiresAt: newExp
+          });
+          userData.role = targetRole;
+          userData.dailyLimit = newLimit;
+          userData.vipExpiresAt = newExp;
+          showToast(`Status member berhasil ditingkatkan ke ${targetRole.toUpperCase()} selama ${days} hari!`, 'success');
+        }
+
+        await update(voucherRef, {
+          isUsed: true,
+          usedBy: currentUser.email,
+          usedAt: now
+        });
+
+        renderDashboardMetrics();
+        closeModal('redeemModal');
+        input.value = '';
+      } catch (err) {
+        showToast('Gagal memproses voucher. Silakan coba lagi.', 'error');
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Gunakan Voucher Sekarang';
+      }
+    });
+
+    // 7. IMAGE UPLOAD & CLIENT-SIDE COMPRESSION
+    const imageInput = document.getElementById('imageInput');
+    const previewWrapper = document.getElementById('previewWrapper');
+    const imagePreview = document.getElementById('imagePreview');
+    const uploadPlaceholder = document.getElementById('uploadPlaceholder');
+    const changePhotoBtn = document.getElementById('changePhotoBtn');
+    const imageMetaBadge = document.getElementById('imageMetaBadge');
+
+    imageInput.addEventListener('change', (e) => {
+      if (e.target.files && e.target.files[0]) {
+        handleImageFile(e.target.files[0]);
+      }
+    });
+
+    changePhotoBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      imageInput.value = '';
+      currentImageBase64 = null;
+      previewWrapper.classList.add('hidden');
+      uploadPlaceholder.classList.remove('hidden');
+      updateGenerateBtnUI();
+    });
+
+    function handleImageFile(file) {
+      if (!file.type.startsWith('image/')) {
+        showToast('Format file harus berupa foto (JPG, PNG, atau WebP).', 'error');
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = (ev) => {
+        const img = new Image();
+        img.onload = () => {
+          const canvas = document.createElement('canvas');
+          let w = img.width;
+          let h = img.height;
+          const maxDim = 1024;
+
+          if (w > maxDim || h > maxDim) {
+            if (w > h) {
+              h = Math.round((h * maxDim) / w);
+              w = maxDim;
+            } else {
+              w = Math.round((w * maxDim) / h);
+              h = maxDim;
+            }
+          }
+
+          canvas.width = w;
+          canvas.height = h;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, w, h);
+
+          const dataUrl = canvas.toDataURL('image/jpeg', 0.86);
+          currentImageBase64 = dataUrl.split(',')[1];
+
+          imagePreview.src = dataUrl;
+          imageMetaBadge.textContent = `${w} × ${h} px`;
+          uploadPlaceholder.classList.add('hidden');
+          previewWrapper.classList.remove('hidden');
+          updateGenerateBtnUI();
+        };
+        img.src = ev.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function updateGenerateBtnUI() {
+      const btn = document.getElementById('generateBtn');
+      if (!currentUser) {
+        btn.disabled = true;
+        btn.className = 'btn-3d w-full py-4 px-5 text-sm sm:text-base bg-zinc-200 text-zinc-600 flex items-center justify-center gap-2';
+        btn.innerHTML = `<span>Masuk Akun untuk Membuat Prompt</span>`;
+      } else if (!currentImageBase64) {
+        btn.disabled = true;
+        btn.className = 'btn-3d w-full py-4 px-5 text-sm sm:text-base bg-zinc-200 text-zinc-600 flex items-center justify-center gap-2';
+        btn.innerHTML = `<span>Pilih Foto Referensi Terlebih Dahulu</span>`;
+      } else {
+        btn.disabled = false;
+        btn.className = 'btn-3d w-full py-4 px-5 text-sm sm:text-base bg-brand-lime text-black cursor-pointer flex items-center justify-center gap-2.5';
+        btn.innerHTML = `
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+          </svg>
+          <span>Buat Prompt Sekarang</span>
+        `;
+      }
+    }
+
+    // 8. GENERATE PROMPT & DEDUCT QUOTA
+    document.getElementById('generateBtn').addEventListener('click', async () => {
+      if (!currentUser || !userData || !currentImageBase64) return;
+
+      if (userData.role !== 'admin') {
+        const maxDaily = ROLE_LIMITS[userData.role] || 5;
+        const effectiveUsed = userData.role === 'free'
+          ? Math.max(userData.usedToday || 0, deviceUsedToday)
+          : (userData.usedToday || 0);
+        const remDaily = maxDaily - effectiveUsed;
+        const remExtra = userData.extraLimit || 0;
+
+        if (remDaily <= 0 && remExtra <= 0) {
+          showToast('Kuota harian gratis telah habis. Gunakan kode voucher atau tingkatkan ke VIP untuk melanjutkan.', 'error');
+          openModal('redeemModal');
+          return;
+        }
+      }
+
+      setGeneratingUI(true);
+
+      try {
+        const resultData = await requestGeminiVisionPrompt(currentImageBase64);
+        await recordQuotaUsage();
+        displaySingleBlockPrompt(resultData);
+        showToast('Prompt berhasil dibuat dan siap disalin!', 'success');
+      } catch (err) {
+        showToast('Gagal menganalisis foto. Silakan coba beberapa saat lagi.', 'error');
+      } finally {
+        setGeneratingUI(false);
+      }
+    });
+
+    async function requestGeminiVisionPrompt(base64Image) {
+      const models = ['gemini-2.5-flash', 'gemini-1.5-flash'];
+      let lastError = null;
+
+      for (const modelName of models) {
+        try {
+          const url = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${GEMINI_API_KEY}`;
+          const body = {
+            contents: [{
+              role: 'user',
+              parts: [
+                { text: MASTER_SYSTEM_INSTRUCTION },
+                { inlineData: { mimeType: 'image/jpeg', data: base64Image } }
+              ]
+            }],
+            generationConfig: {
+              temperature: 0.2,
+              responseMimeType: "application/json"
+            }
+          };
+
+          const response = await fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(body)
+          });
+
+          if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+          const json = await response.json();
+          const rawText = json?.candidates?.[0]?.content?.parts?.[0]?.text;
+          if (!rawText) throw new Error('Empty response');
+
+          const cleaned = rawText.replace(/```json|```/g, '').trim();
+          const parsed = JSON.parse(cleaned);
+
+          if (parsed.part1_edit && parsed.part2_desc && parsed.part3_neg) {
+            return parsed;
+          }
+          throw new Error('Incomplete JSON keys');
+        } catch (err) {
+          lastError = err;
+        }
+      }
+      throw lastError || new Error('Vision API error');
+    }
+
+    async function recordQuotaUsage() {
+      if (userData.role === 'admin') return;
+
+      const todayWIB = getJakartaDate();
+      const fp = await getSilentDeviceFingerprint();
+      const userRef = ref(db, `users/${currentUser.uid}`);
+      const devUsageRef = ref(db, `device_usage/${fp}/${todayWIB}`);
+
+      const maxDaily = ROLE_LIMITS[userData.role] || 5;
+      let used = userData.role === 'free'
+        ? Math.max(userData.usedToday || 0, deviceUsedToday)
+        : (userData.usedToday || 0);
+      let extra = userData.extraLimit || 0;
+
+      if (used < maxDaily) {
+        used += 1;
+      } else if (extra > 0) {
+        extra -= 1;
+      }
+
+      await update(userRef, {
+        usedToday: used,
+        extraLimit: extra
+      });
+
+      if (userData.role === 'free') {
+        await set(devUsageRef, { used: used, updatedAt: Date.now() });
+        deviceUsedToday = used;
+      }
+
+      userData.usedToday = used;
+      userData.extraLimit = extra;
+      renderDashboardMetrics();
+    }
+
+    function sanitizeParagraph(text) {
+      return String(text || '')
+        .replace(/^(BAGIAN\s*\d+\s*[-—:]\s*[^\n]*\n?)/i, '')
+        .replace(/\r?\n|\r/g, ' ')
+        .replace(/\s{2,}/g, ' ')
+        .trim();
+    }
+
+    function displaySingleBlockPrompt(data) {
+      let p1 = sanitizeParagraph(data.part1_edit);
+      let p2 = sanitizeParagraph(data.part2_desc);
+      let p3 = sanitizeParagraph(data.part3_neg);
+
+      if (!p1.startsWith('Edit and preserve')) {
+        p1 = 'Edit and preserve the original face and identity of every visible person based on the reference image provided. ' + p1;
+      }
+      if (!p2.startsWith('The final image')) {
+        p2 = 'The final image must appear as a genuine, unedited raw candid smartphone photograph captured in the real world using an iPhone 17 Pro. ' + p2;
+      }
+      if (!p3.toLowerCase().startsWith('negative prompt:')) {
+        p3 = 'Negative prompt: ' + p3;
+      }
+
+      const fullPromptBlock = `${p1}\n\n${p2}\n\n${p3}`;
+
+      document.getElementById('unifiedPromptText').textContent = fullPromptBlock;
+      const words = fullPromptBlock.split(/\s+/).filter(Boolean).length;
+      document.getElementById('promptStatsBadge').textContent = `${words} Kata • 1 Blok Utuh`;
+
+      document.getElementById('resultEmptyState').classList.add('hidden');
+      document.getElementById('resultContent').classList.remove('hidden');
+      document.getElementById('copyTopBtn').classList.remove('hidden');
+    }
+
+    function setGeneratingUI(isLoading) {
+      const empty = document.getElementById('resultEmptyState');
+      const loader = document.getElementById('resultLoadingState');
+      const content = document.getElementById('resultContent');
+      const btn = document.getElementById('generateBtn');
+
+      if (isLoading) {
+        empty.classList.add('hidden');
+        content.classList.add('hidden');
+        loader.classList.remove('hidden');
+        btn.disabled = true;
+        btn.innerHTML = `<span>Sedang Menganalisis Foto...</span>`;
+      } else {
+        loader.classList.add('hidden');
+        updateGenerateBtnUI();
+      }
+    }
+
+    // 9. ADMIN PANEL MANAGEMENT
+    window.openAdminConsole = function() {
+      if (!userData || userData.role !== 'admin') return;
+      openModal('adminModal');
+      loadAdminUsers();
+      loadAdminVouchers();
+    };
+
+    window.switchAdminTab = function(tabId) {
+      ['tabCreateVoucher', 'tabManageUsers', 'tabVoucherHistory'].forEach(id => {
+        document.getElementById(id).classList.add('hidden');
+      });
+      document.getElementById(tabId).classList.remove('hidden');
+
+      const tabMap = {
+        tabCreateVoucher: 'btnTabVoucher',
+        tabManageUsers: 'btnTabUsers',
+        tabVoucherHistory: 'btnTabHistory'
+      };
+
+      Object.entries(tabMap).forEach(([key, btnId]) => {
+        const btn = document.getElementById(btnId);
+        if (key === tabId) {
+          btn.className = 'px-4 py-2.5 text-xs font-display font-extrabold rounded-t-xl border-t-[3px] border-x-[3px] border-brand-ink bg-brand-lime text-black whitespace-nowrap';
+        } else {
+          btn.className = 'px-4 py-2.5 text-xs font-display font-extrabold rounded-t-xl border-t-[3px] border-x-[3px] border-brand-ink bg-white text-zinc-700 whitespace-nowrap';
+        }
+      });
+
+      if (tabId === 'tabManageUsers') loadAdminUsers();
+      if (tabId === 'tabVoucherHistory') loadAdminVouchers();
+    };
+
+    function generateShortCode() {
+      return Math.random().toString(36).substring(2, 6).toUpperCase();
+    }
+
+    window.createExtraQuotaVoucher = async function() {
+      const amount = parseInt(document.getElementById('extraAmountInput').value, 10) || 25;
+      const days = parseInt(document.getElementById('extraDurationDays').value, 10) || 7;
+      const code = `KUOTA${amount}-${generateShortCode()}`;
+      const now = Date.now();
+
+      await set(ref(db, `redeem_codes/${code}`), {
+        code,
+        type: 'extra_quota',
+        value: amount,
+        durationDays: days,
+        isUsed: false,
+        createdAt: now,
+        expiresAt: now + days * 24 * 60 * 60 * 1000
+      });
+
+      displayCreatedVoucher(code, `Kuota Tambahan +${amount} • Masa aktif ${days} hari`);
+      showToast(`Voucher ${code} berhasil dibuat.`, 'success');
+    };
+
+    window.createRoleUpgradeVoucher = async function() {
+      const roleTarget = document.getElementById('roleTargetSelect').value;
+      const days = parseInt(document.getElementById('roleDurationDays').value, 10) || 30;
+      const prefix = roleTarget.toUpperCase();
+      const code = `${prefix}${days}H-${generateShortCode()}`;
+      const now = Date.now();
+
+      await set(ref(db, `redeem_codes/${code}`), {
+        code,
+        type: 'role_upgrade',
+        roleTarget,
+        durationDays: days,
+        isUsed: false,
+        createdAt: now,
+        expiresAt: now + 30 * 24 * 60 * 60 * 1000
+      });
+
+      displayCreatedVoucher(code, `Paket ${prefix} • Durasi aktif ${days} hari`);
+      showToast(`Voucher ${code} berhasil dibuat.`, 'success');
+    };
+
+    function displayCreatedVoucher(code, desc) {
+      const box = document.getElementById('generatedCodeBox');
+      document.getElementById('generatedCodeText').textContent = code;
+      document.getElementById('generatedCodeDesc').textContent = desc;
+      box.classList.remove('hidden');
+    }
+
+    window.copyGeneratedCode = function() {
+      const code = document.getElementById('generatedCodeText').textContent;
+      copyTextToClipboard(code);
+      showToast(`Kode ${code} berhasil disalin.`, 'success');
+    };
+
+    window.loadAdminUsers = async function() {
+      const tbody = document.getElementById('adminUsersTable');
+      tbody.innerHTML = `<tr><td colspan="5" class="p-4 text-center">Memuat data pengguna...</td></tr>`;
+
+      const snap = await get(ref(db, 'users'));
+      if (!snap.exists()) {
+        tbody.innerHTML = `<tr><td colspan="5" class="p-4 text-center">Belum ada pengguna terdaftar.</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = '';
+      snap.forEach((child) => {
+        const uid = child.key;
+        const u = child.val();
+        const role = u.role || 'free';
+        const max = ROLE_LIMITS[role] || 5;
+        const devFp = u.deviceFp || '';
+
+        const tr = document.createElement('tr');
+        tr.className = 'hover:bg-[#F3F1EC]';
+        tr.innerHTML = `
+          <td class="p-3 font-bold text-black truncate max-w-[180px]" title="${u.email}">${u.email || '-'}</td>
+          <td class="p-3">
+            <span class="badge-3d px-2.5 py-0.5 text-[10px] uppercase ${
+              role === 'admin' ? 'bg-brand-violet text-white' :
+              role === 'vip' ? 'bg-brand-amber text-black' :
+              role === 'reseller' ? 'bg-brand-cyan text-black' :
+              'bg-brand-lime text-black'
+            }">${role}</span>
+          </td>
+          <td class="p-3 font-mono">${u.usedToday || 0} / ${role === 'admin' ? '∞' : max}</td>
+          <td class="p-3 font-mono font-bold text-black">+${u.extraLimit || 0}</td>
+          <td class="p-3 flex flex-wrap items-center gap-2">
+            <select onchange="adminChangeUserRole('${uid}', this.value)" class="border-2 border-black rounded-lg bg-white px-2.5 py-1 text-xs font-bold">
+              <option value="free" ${role === 'free' ? 'selected' : ''}>Reguler (5)</option>
+              <option value="vip" ${role === 'vip' ? 'selected' : ''}>VIP (50)</option>
+              <option value="reseller" ${role === 'reseller' ? 'selected' : ''}>Reseller (200)</option>
+              <option value="admin" ${role === 'admin' ? 'selected' : ''}>Admin (∞)</option>
+            </select>
+            <button onclick="adminResetQuota('${uid}', '${devFp}')" class="btn-3d px-3 py-1 bg-brand-amber text-black text-[11px]">
+              Reset Kuota
+            </button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    };
+
+    window.adminChangeUserRole = async function(uid, newRole) {
+      const limit = ROLE_LIMITS[newRole] || 5;
+      const exp = (newRole === 'vip' || newRole === 'reseller') ? Date.now() + 30 * 24 * 60 * 60 * 1000 : 0;
+      await update(ref(db, `users/${uid}`), {
+        role: newRole,
+        dailyLimit: limit,
+        vipExpiresAt: exp
+      });
+      if (currentUser && currentUser.uid === uid) {
+        await syncUserProfileAndQuota(currentUser);
+      }
+      showToast(`Status pengguna diperbarui ke ${newRole.toUpperCase()}.`, 'success');
+      loadAdminUsers();
+    };
+
+    window.adminResetQuota = async function(uid, devFp) {
+      const todayWIB = getJakartaDate();
+      await update(ref(db, `users/${uid}`), { usedToday: 0 });
+      if (devFp) {
+        await set(ref(db, `device_usage/${devFp}/${todayWIB}`), { used: 0, updatedAt: Date.now() });
+      }
+      if (currentUser && currentUser.uid === uid) {
+        await syncUserProfileAndQuota(currentUser);
+      }
+      showToast('Pemakaian kuota harian berhasil direset ke 0.', 'success');
+      loadAdminUsers();
+    };
+
+    window.loadAdminVouchers = async function() {
+      const tbody = document.getElementById('adminVouchersTable');
+      tbody.innerHTML = `<tr><td colspan="4" class="p-4 text-center">Memuat daftar voucher...</td></tr>`;
+
+      const snap = await get(ref(db, 'redeem_codes'));
+      if (!snap.exists()) {
+        tbody.innerHTML = `<tr><td colspan="4" class="p-4 text-center">Belum ada voucher yang dibuat.</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = '';
+      snap.forEach((child) => {
+        const v = child.val();
+        const benefit = v.type === 'extra_quota'
+          ? `+${v.value} Kuota Tambahan (${v.durationDays || 7} hari)`
+          : `Paket ${(v.roleTarget || 'VIP').toUpperCase()} (${v.durationDays || 30} hari)`;
+
+        const tr = document.createElement('tr');
+        tr.className = 'hover:bg-[#F3F1EC]';
+        tr.innerHTML = `
+          <td class="p-3 font-mono font-bold text-black select-all">${v.code}</td>
+          <td class="p-3">${benefit}</td>
+          <td class="p-3">
+            ${v.isUsed
+              ? `<span class="badge-3d px-2.5 py-0.5 bg-zinc-200 text-zinc-700 text-[10px]">Terpakai (${v.usedBy || ''})</span>`
+              : `<span class="badge-3d px-2.5 py-0.5 bg-brand-lime text-black text-[10px]">Tersedia</span>`
+            }
+          </td>
+          <td class="p-3 flex items-center gap-2">
+            <button onclick="copyVoucherCode('${v.code}')" class="btn-3d px-3 py-1 bg-white text-black text-[11px]">Salin</button>
+            <button onclick="removeVoucherCode('${v.code}')" class="btn-3d px-3 py-1 bg-brand-coral text-white text-[11px]">Hapus</button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    };
+
+    window.copyVoucherCode = function(code) {
+      copyTextToClipboard(code);
+      showToast(`Kode ${code} berhasil disalin.`, 'success');
+    };
+
+    window.removeVoucherCode = async function(code) {
+      await remove(ref(db, `redeem_codes/${code}`));
+      showToast(`Voucher ${code} telah dihapus.`, 'info');
+      loadAdminVouchers();
+    };
+
+    // 10. UI HELPERS (COPY, MODAL, TOAST)
+    window.copyUnifiedPrompt = function(btn) {
+      const text = document.getElementById('unifiedPromptText').textContent;
+      if (!text) return;
+      copyTextToClipboard(text);
+      showToast('Prompt berhasil disalin ke clipboard!', 'success');
+
+      if (btn) {
+        const originalHTML = btn.innerHTML;
+        btn.innerHTML = `<span>Berhasil Disalin! ✓</span>`;
+        setTimeout(() => {
+          btn.innerHTML = originalHTML;
+        }, 1600);
+      }
+    };
+
+    function copyTextToClipboard(text) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        document.execCommand('copy');
+      } catch (e) {}
+      document.body.removeChild(ta);
+    }
+
+    window.openModal = function(id) {
+      document.getElementById(id).classList.remove('hidden');
+    };
+
+    window.closeModal = function(id) {
+      document.getElementById(id).classList.add('hidden');
+    };
+
+    window.showToast = function(message, type = 'info') {
+      const container = document.getElementById('toastContainer');
+      const toast = document.createElement('div');
+      const styleMap = {
+        success: 'bg-brand-lime text-black',
+        error: 'bg-brand-coral text-white',
+        info: 'bg-brand-amber text-black'
+      };
+      toast.className = `card-3d-sm p-4 text-xs font-display font-extrabold pointer-events-auto flex items-center justify-between gap-3 transition-all duration-200 ${styleMap[type] || styleMap.info}`;
+      toast.innerHTML = `
+        <span class="leading-relaxed">${message}</span>
+        <button onclick="this.parentElement.remove()" class="w-6 h-6 rounded-lg border-2 border-black bg-white text-black font-mono text-xs flex items-center justify-center shrink-0">✕</button>
+      `;
+      container.appendChild(toast);
+
+      setTimeout(() => {
+        toast.style.opacity = '0';
+        setTimeout(() => toast.remove(), 250);
+      }, 3800);
+    };
+  </script>
 </body>
 </html>
